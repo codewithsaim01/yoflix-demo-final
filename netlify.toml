@@ -1,0 +1,9 @@
+# YOFLIX demo — a static copy of the website. No build step: this folder is published as it is.
+[build]
+  publish = "."
+
+# Keep the demo out of search engines while the client reviews it.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
