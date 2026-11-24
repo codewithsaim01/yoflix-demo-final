@@ -1,6 +1,6 @@
-/* Yoflix Nova 5 — homepage hero, dashboard window and trust bar. Tokens come from theme.css. */
+/* Yoflix Nova 5 — homepage hero, growth hub visual and trust bar. Tokens come from theme.css. */
 
-.nova-mh { position: relative; overflow: hidden; margin-top: calc(var(--nv-header-h) * -1); padding: calc(var(--nv-header-h) + clamp(40px, 5vw, 72px)) 0 clamp(48px, 6vw, 80px); background: linear-gradient(180deg, #e6f0ff 0%, #f3f8ff 55%, #fff 100%); }
+.nova-mh { position: relative; overflow: hidden; margin-top: calc(var(--nv-header-h) * -1); padding: calc(var(--nv-header-h) + clamp(32px, 2.8vw, 40px)) 0 clamp(48px, 6vw, 80px); background: linear-gradient(180deg, #edeff8 0%, #f6f7fc 55%, #fff 100%); }
 .nova-mh > .nova-container { z-index: 1; }
 .nova-mh-inner { display: grid; grid-template-columns: minmax(0, 5.6fr) minmax(0, 6.4fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
 
@@ -13,100 +13,101 @@
 .nova-mh-support-marks { display: inline-flex; }
 .nova-mh-support-marks .nova-mark + .nova-mark { margin-left: -6px; box-shadow: 0 0 0 2px #fff; }
 
-/* Dashboard window */
-.nova-mh-visual { position: relative; padding: 34px 0 40px 12px; }
-.nova-mh-photo { overflow: hidden; border-radius: 24px; box-shadow: 0 40px 80px -40px rgba(21, 87, 255, .55); }
+/* Hero visual */
+.nova-mh-visual { position: relative; padding: 16px 0 40px 12px; }
+.nova-mh-photo { overflow: hidden; border-radius: 24px; box-shadow: 0 40px 80px -40px rgba(3, 24, 95, .55); }
 .nova-mh-photo img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; }
 /* Soft colour halo behind the window. */
-.nova-mh-glow { position: absolute; inset: 8% 4% 6% 10%; z-index: 0; border-radius: 40px; background: radial-gradient(60% 60% at 30% 30%, rgba(59, 139, 255, .45), transparent 70%), radial-gradient(50% 50% at 80% 75%, rgba(124, 92, 255, .35), transparent 70%); filter: blur(40px); pointer-events: none; }
+.nova-mh-glow { position: absolute; inset: 8% 4% 6% 10%; z-index: 0; border-radius: 40px; background: radial-gradient(60% 60% at 30% 30%, rgba(61, 85, 176, .45), transparent 70%), radial-gradient(50% 50% at 80% 75%, rgba(3, 24, 95, .3), transparent 70%); filter: blur(40px); pointer-events: none; }
 /* A soft dotted pattern peeking out behind the window's top-right corner. */
-.nova-mh-dots { position: absolute; top: 4px; right: -14px; z-index: 0; width: 180px; height: 180px; background-image: radial-gradient(#b9cdf7 1.6px, transparent 1.7px); background-size: 16px 16px; -webkit-mask-image: radial-gradient(circle at 70% 30%, #000 30%, transparent 72%); mask-image: radial-gradient(circle at 70% 30%, #000 30%, transparent 72%); pointer-events: none; }
-.nova-dash { position: relative; z-index: 1; overflow: hidden; border: 1px solid rgba(255, 255, 255, .95); border-radius: 22px; background: rgba(255, 255, 255, .92); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 60px 100px -45px rgba(11, 31, 77, .45), 0 30px 60px -30px rgba(21, 87, 255, .35), inset 0 1px 0 #fff; font-size: 12px; animation: nova-float 8s ease-in-out infinite; }
-.nova-dash-chrome { display: flex; align-items: center; gap: 12px; padding: 11px 16px; border-bottom: 1px solid var(--nv-line); background: linear-gradient(180deg, #fbfdff, #f4f8ff); }
-.nova-dash-dots { display: inline-flex; gap: 6px; }
-.nova-dash-dots i { width: 9px; height: 9px; border-radius: 50%; background: #ff5f57; }
-.nova-dash-dots i:nth-child(2) { background: #febc2e; }
-.nova-dash-dots i:nth-child(3) { background: #28c840; }
-.nova-dash-url { display: inline-flex; align-items: center; gap: 7px; flex: 1; max-width: 260px; margin: 0 auto; padding: 5px 12px; border: 1px solid var(--nv-line); border-radius: 8px; background: #fff; color: var(--nv-subtle); font-size: 10.5px; }
-.nova-dash-url i { color: var(--nv-success); font-size: 9px; }
-.nova-dash-live { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: #e7f8ee; color: var(--nv-success); font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
-.nova-dash-live i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: nova-dash-blink 1.6s ease-in-out infinite; }
-@keyframes nova-dash-blink { 50% { opacity: .25; } }
-.nova-dash-body { display: grid; gap: 14px; padding: 18px; }
-.nova-dash-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.nova-dash-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
-/* YOFLIX wordmark tile in the window header. */
-.nova-dash-wordmark { display: grid; flex-shrink: 0; place-items: center; height: 34px; padding: 0 10px; border-radius: 10px; background: var(--nv-grad); color: #fff; font: 800 12px/1 var(--nv-display); letter-spacing: .08em; box-shadow: 0 8px 16px -10px rgba(21, 87, 255, .9); }
-.nova-dash-brand p { display: grid; gap: 2px; margin: 0; }
-.nova-dash-brand b { color: var(--nv-navy); font: 800 15px/1.2 var(--nv-display); }
-.nova-dash-brand small { color: var(--nv-muted); font-size: 10.5px; }
-.nova-dash-range { display: inline-flex; flex-shrink: 0; align-items: center; gap: 7px; padding: 7px 11px; border: 1px solid var(--nv-line); border-radius: 9px; background: #fff; color: var(--nv-navy); font-size: 10.5px; font-weight: 600; }
-.nova-dash-range i { color: var(--nv-subtle); font-size: 9px; }
+.nova-mh-dots { position: absolute; top: 4px; right: -14px; z-index: 0; width: 180px; height: 180px; background-image: radial-gradient(#c6cdea 1.6px, transparent 1.7px); background-size: 16px 16px; -webkit-mask-image: radial-gradient(circle at 70% 30%, #000 30%, transparent 72%); mask-image: radial-gradient(circle at 70% 30%, #000 30%, transparent 72%); pointer-events: none; }
+/* Growth hub: a light glass card like the rest of the site, with marketplaces orbiting the YOFLIX mark. */
+.nova-hub { --r: 250px; position: relative; z-index: 1; overflow: hidden; display: grid; gap: 18px; padding: 22px; border: 1px solid rgba(255, 255, 255, .95); border-radius: 28px; color: var(--nv-navy); background: radial-gradient(70% 55% at 50% 45%, rgba(214, 220, 240, .65) 0%, rgba(214, 220, 240, 0) 70%), linear-gradient(180deg, rgba(255, 255, 255, .96) 0%, rgba(246, 247, 252, .94) 100%); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 60px 100px -45px rgba(11, 31, 77, .4), 0 30px 60px -30px rgba(3, 24, 95, .3), inset 0 1px 0 #fff; animation: nova-float 8s ease-in-out infinite; }
+/* Fine grid texture, faded towards the edges. */
+.nova-hub::before { content: ''; position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(3, 24, 95, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(3, 24, 95, .05) 1px, transparent 1px); background-size: 28px 28px; -webkit-mask-image: radial-gradient(70% 60% at 50% 45%, #000, transparent 80%); mask-image: radial-gradient(70% 60% at 50% 45%, #000, transparent 80%); pointer-events: none; }
+.nova-hub > * { position: relative; z-index: 1; }
 
-/* Revenue card: navy-to-blue gradient with a glowing white trend line. */
-.nova-dash-revenue { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: end; gap: 18px; overflow: hidden; padding: 18px 20px 16px; border-radius: 16px; background: radial-gradient(120% 140% at 100% 0%, #4aa3ff 0%, rgba(74, 163, 255, 0) 55%), linear-gradient(135deg, #0b1f4d 0%, #1243c9 60%, #1557ff 100%); color: #fff; box-shadow: 0 20px 36px -20px rgba(21, 87, 255, .9); }
-.nova-dash-revenue::after { content: ''; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .14) 50%, transparent 65%); transform: translateX(-100%); animation: nova-dash-sheen 6s 1.5s ease-in-out infinite; pointer-events: none; }
-@keyframes nova-dash-sheen { 0%, 60% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-.nova-dash-revenue-copy { position: relative; z-index: 1; display: grid; gap: 6px; }
-.nova-dash-revenue-copy small { color: rgba(255, 255, 255, .72); font-size: 11px; font-weight: 600; letter-spacing: .02em; }
-.nova-dash-revenue-copy b { font: 800 30px/1 var(--nv-display); letter-spacing: -.03em; }
-.nova-dash-revenue-copy em { display: inline-flex; align-items: center; gap: 6px; width: max-content; padding: 4px 9px; border-radius: 999px; background: rgba(40, 200, 64, .2); color: #7cf3a1; font-size: 10.5px; font-style: normal; font-weight: 700; }
-.nova-dash-revenue-copy em span { color: rgba(255, 255, 255, .65); font-weight: 500; }
-.nova-dash-revenue-chart { display: block; width: 100%; height: 92px; overflow: visible; }
-.nova-dash-revenue .nova-dash-grid { fill: none; stroke: rgba(255, 255, 255, .14); stroke-dasharray: 3 5; vector-effect: non-scaling-stroke; }
-.nova-dash-revenue .nova-dash-line { stroke: #fff; stroke-width: 2.5; filter: drop-shadow(0 4px 8px rgba(255, 255, 255, .45)); }
-.nova-dash-point { position: absolute; right: 20px; bottom: calc(16px + 92px * 84 / 90); width: 10px; height: 10px; border: 2px solid #1557ff; border-radius: 50%; background: #fff; transform: translate(50%, 50%); animation: nova-dash-point 2.4s ease-out infinite; }
-@keyframes nova-dash-point { 0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, .6); } 100% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); } }
-.nova-dash-tip { position: absolute; top: 12px; right: 34px; display: grid; gap: 1px; padding: 5px 9px; border-radius: 8px; background: #fff; color: var(--nv-navy); font: 800 11px/1.1 var(--nv-display); box-shadow: 0 8px 18px -8px rgba(0, 0, 0, .45); }
-.nova-dash-tip small { color: var(--nv-subtle); font: 600 9px/1 var(--nv-font); }
+/* Header bar: the Y mark, title and the marketplaces it covers. */
+.nova-hub-head { display: flex; align-items: center; gap: 12px; padding: 10px 12px 10px 10px; border: 1px solid var(--nv-line); border-radius: 18px; background: #fff; box-shadow: 0 14px 30px -22px rgba(3, 24, 95, .45); }
+.nova-hub-mark { position: relative; display: grid; flex-shrink: 0; place-items: center; width: 44px; height: 44px; overflow: hidden; border-radius: 13px; background: linear-gradient(145deg, #0b2275 0%, #03185f 60%, #020f40 100%); color: #fff; box-shadow: 0 10px 20px -8px rgba(3, 24, 95, .7); }
+.nova-hub-mark svg { width: 26px; height: 26px; }
+/* A soft light sweep across the mark every few seconds. */
+.nova-hub-mark::after { content: ''; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, .45) 50%, transparent 70%); translate: -120% 0; animation: nova-hub-sheen 4.5s 1s ease-in-out infinite; }
+@keyframes nova-hub-sheen { 0%, 70% { translate: -120% 0; } 100% { translate: 120% 0; } }
+.nova-hub-head p { display: grid; gap: 4px; margin: 0; min-width: 0; }
+.nova-hub-eyebrow { color: var(--nv-blue-2); font: 700 10px/1 var(--nv-font); letter-spacing: .24em; }
+.nova-hub-head b { font: 800 17px/1.15 var(--nv-display); letter-spacing: -.01em; white-space: nowrap; }
+.nova-hub-head b span { background: var(--nv-grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nova-hub-markets { display: inline-flex; flex-shrink: 0; margin-left: auto; }
+.nova-hub-markets i { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid var(--nv-line); border-radius: 50%; background: #fff; box-shadow: 0 0 0 2px #fff, 0 6px 12px -6px rgba(3, 24, 95, .4); }
+.nova-hub-markets i + i { margin-left: -5px; }
+.nova-hub-markets img { width: 15px; height: 15px; object-fit: contain; }
+.nova-hub-markets--ebay img { width: 21px; height: auto; }
+.nova-hub-live { display: inline-flex; flex-shrink: 0; align-items: center; gap: 7px; padding: 6px 12px; border: 1px solid #bfe8cd; border-radius: 999px; background: #e7f8ee; color: var(--nv-success); font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.nova-hub-live i { position: relative; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.nova-hub-live i::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: currentColor; animation: nova-hub-ping 1.8s ease-out infinite; }
+@keyframes nova-hub-ping { from { opacity: .7; scale: 1; } to { opacity: 0; scale: 3; } }
 
-/* KPI tiles */
-.nova-dash-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-.nova-dash-kpis > div { position: relative; display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--nv-line); border-radius: 13px; background: #fff; }
-.nova-dash-kpis p { display: grid; gap: 3px; margin: 0; min-width: 0; }
-.nova-dash-kpis small { color: var(--nv-muted); font-size: 10px; white-space: nowrap; }
-.nova-dash-kpis b { color: var(--nv-navy); font: 800 16px/1.1 var(--nv-display); white-space: nowrap; }
-.nova-dash-kpis em { position: absolute; top: 10px; right: 10px; color: var(--nv-success); font-size: 9.5px; font-style: normal; font-weight: 700; }
-.nova-dash-kpi-icon { display: grid; flex-shrink: 0; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: var(--nv-blue-soft); color: var(--nv-blue); font-size: 13px; }
-.nova-dash-kpi-icon.is-violet { background: #f0ebff; color: #6d4aff; }
-.nova-dash-ring { display: grid; flex-shrink: 0; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: conic-gradient(var(--nv-success) calc(var(--pct) * 1%), #e5f5ec 0); }
-.nova-dash-ring b { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #fff; color: var(--nv-success); font: 800 10px/1 var(--nv-display); }
-.nova-dash-health p b { font-size: 13px; }
+/* Orbit rings: the dashed rings drift in opposite directions, a glowing arc sweeps
+   around each one, and the inner disc breathes. */
+.nova-hub-orbit { position: relative; height: calc(var(--r) + 48px); }
+.nova-hub-ring, .nova-hub-spin, .nova-hub-core { position: absolute; top: 50%; left: 50%; border-radius: 50%; translate: -50% -50%; }
+.nova-hub-ring { border: 1.5px dashed rgba(3, 24, 95, .16); }
+.nova-hub-ring::before { content: ''; position: absolute; inset: -1.5px; padding: 2px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0turn, transparent .72turn, rgba(61, 85, 176, .9) 1turn); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+.nova-hub-ring--1 { width: calc(var(--r) * .4); height: calc(var(--r) * .4); border: 1px solid rgba(3, 24, 95, .1); background: radial-gradient(circle, rgba(61, 85, 176, .14), rgba(61, 85, 176, .03) 70%); animation: nova-hub-breathe 4s ease-in-out infinite; }
+.nova-hub-ring--1::before { display: none; }
+.nova-hub-ring--2 { width: calc(var(--r) * .68); height: calc(var(--r) * .68); animation: nova-hub-orbit 22s linear infinite reverse; }
+.nova-hub-ring--2::before { background: conic-gradient(from 180deg, transparent 0turn, transparent .78turn, rgba(3, 24, 95, .55) 1turn); animation: nova-hub-orbit 5s linear infinite reverse; }
+.nova-hub-ring--3 { width: var(--r); height: var(--r); animation: nova-hub-orbit 40s linear infinite; }
+.nova-hub-ring--3::before { animation: nova-hub-orbit 7s linear infinite; }
+@keyframes nova-hub-breathe { 50% { scale: 1.08; } }
 
-/* Channel split and activity feed */
-.nova-dash-panels { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; }
-.nova-dash-channels, .nova-dash-feed { display: grid; align-content: start; gap: 9px; padding: 13px; border: 1px solid var(--nv-line); border-radius: 13px; background: #fff; }
-.nova-dash-label { margin: 0 0 2px; }
-.nova-dash-label b { color: var(--nv-navy); font-size: 12px; }
-.nova-dash-channels > span { display: grid; grid-template-columns: 22px 52px minmax(0, 1fr) 30px; align-items: center; gap: 8px; color: var(--nv-navy); font-size: 11px; font-weight: 600; }
-.nova-dash-channels > span > b { color: var(--nv-muted); font-size: 10.5px; text-align: right; }
-.nova-dash-ch { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 7px; font: 800 11px/1 var(--nv-display); font-style: normal; }
-.nova-dash-ch i { font-size: 11px; }
-.nova-dash-ch img { display: block; width: 14px; height: 14px; object-fit: contain; }
-.nova-dash-ch--ebay { border: 1px solid var(--nv-line); background: #fff; }
-.nova-dash-ch--ebay img { width: 18px; height: auto; }
-.nova-dash-ch--shopify { background: #eef7e3; color: #5e8e3e; }
-.nova-dash-ch--walmart { background: var(--nv-walmart); color: var(--nv-walmart-spark); }
-.nova-dash-channels em { position: relative; height: 6px; overflow: hidden; border-radius: 6px; background: var(--nv-bg-tint); }
-.nova-dash-channels em::after { content: ''; position: absolute; inset: 0 auto 0 0; width: var(--share, 50%); border-radius: inherit; background: var(--bar, var(--nv-grad)); transform-origin: left; animation: nova-dash-grow 1.4s 1s var(--nv-ease) both; }
-@keyframes nova-dash-grow { from { transform: scaleX(0); } }
-.nova-dash-feed > span { display: flex; align-items: center; gap: 9px; }
-.nova-dash-feed > span > i { display: grid; flex-shrink: 0; place-items: center; width: 24px; height: 24px; border-radius: 8px; font-size: 10px; }
-.nova-dash-feed i.is-green { background: #e7f8ee; color: var(--nv-success); }
-.nova-dash-feed i.is-blue { background: var(--nv-blue-soft); color: var(--nv-blue); }
-.nova-dash-feed i.is-amber { background: #fff6e0; color: #e09b00; }
-.nova-dash-feed p { display: grid; gap: 1px; margin: 0; min-width: 0; color: var(--nv-navy); font-size: 10.5px; font-weight: 600; line-height: 1.25; }
-.nova-dash-feed small { color: var(--nv-subtle); font-size: 9.5px; font-weight: 500; }
+/* Each spinner rotates around the centre; its node counter-rotates so logos stay upright. */
+.nova-hub-spin { rotate: var(--a, 0deg); animation: nova-hub-orbit 36s linear infinite; }
+.nova-hub-spin--outer { width: var(--r); height: var(--r); }
+.nova-hub-spin--inner { width: calc(var(--r) * .68); height: calc(var(--r) * .68); animation-duration: 14s; animation-direction: reverse; }
+@keyframes nova-hub-orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes nova-hub-orbit-rev { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+.nova-hub-node, .nova-hub-spark { position: absolute; top: 0; left: 50%; translate: -50% -50%; }
+.nova-hub-node-in { display: grid; place-items: center; width: 58px; height: 58px; border: 1px solid var(--nv-line); border-radius: 50%; background: #fff; box-shadow: 0 0 0 6px rgba(3, 24, 95, .04), 0 14px 28px -12px rgba(3, 24, 95, .45); rotate: calc(var(--a, 0deg) * -1); animation: nova-hub-orbit-rev 36s linear infinite; }
+.nova-hub-node-in img { width: 28px; height: 28px; object-fit: contain; }
+.nova-hub-node--ebay img { width: 40px; height: auto; }
+.nova-hub-spark { width: 8px; height: 8px; border-radius: 50%; background: var(--nv-blue-2); box-shadow: 0 0 0 4px rgba(61, 85, 176, .15), 0 0 12px rgba(61, 85, 176, .8); }
 
-/* Floating cards: frosted white glass with a fine border, matching the dashboard window. */
-.nova-mh-float { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 12px 16px; border: 1px solid rgba(227, 235, 248, .95); border-radius: 18px; background: rgba(255, 255, 255, .94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 28px 56px -28px rgba(11, 31, 77, .45), 0 10px 24px -16px rgba(21, 87, 255, .35); }
+.nova-hub-core { display: grid; place-items: center; width: calc(var(--r) * .27); height: calc(var(--r) * .27); background: linear-gradient(145deg, #0b2275 0%, #03185f 60%, #020f40 100%); color: #fff; box-shadow: 0 0 0 8px rgba(3, 24, 95, .06), 0 20px 40px -14px rgba(3, 24, 95, .7); }
+.nova-hub-core svg { width: 56%; height: 56%; }
+.nova-hub-core::before, .nova-hub-core::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid rgba(3, 24, 95, .35); animation: nova-hub-pulse 3.2s ease-out infinite; }
+.nova-hub-core::after { animation-delay: 1.6s; }
+@keyframes nova-hub-pulse { from { opacity: .8; scale: 1; } to { opacity: 0; scale: 2.1; } }
+
+/* Live task feed: rows tick to done one after another, on a loop. */
+.nova-hub-tasks { display: grid; gap: 10px; padding: 12px; border: 1px solid var(--nv-line); border-radius: 18px; background: rgba(255, 255, 255, .8); }
+.nova-hub-tasks-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 2px; }
+.nova-hub-tasks-head b { font: 700 13px/1.2 var(--nv-display); }
+.nova-hub-tasks-head small { color: var(--nv-muted); font-size: 10.5px; white-space: nowrap; }
+.nova-hub-tasks ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.nova-hub-tasks li { display: grid; grid-template-columns: auto 1fr; align-items: center; align-content: start; gap: 10px; padding: 11px; border: 1px solid var(--nv-line); border-radius: 12px; background: var(--nv-bg-soft); }
+.nova-hub-tasks li > span { display: grid; flex-shrink: 0; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: var(--nv-blue); color: #fff; font-size: 12px; }
+.nova-hub-tasks li p { display: grid; grid-column: 1 / -1; gap: 2px; margin: 0; min-width: 0; font: 700 12px/1.25 var(--nv-display); }
+.nova-hub-tasks li p small { color: var(--nv-muted); font: 500 10.5px/1.3 var(--nv-font); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nova-hub-tasks em { display: grid; justify-self: end; grid-row: 1; grid-column: 2; place-items: center; width: 22px; height: 22px; border: 1.5px solid rgba(3, 24, 95, .2); border-radius: 50%; color: transparent; font-size: 10px; font-style: normal; animation: nova-hub-tick 7.5s calc(var(--i) * 1.2s + .6s) ease-in-out infinite both; }
+@keyframes nova-hub-tick {
+    0%, 6% { border-color: rgba(3, 24, 95, .2); background: transparent; color: transparent; scale: 1; }
+    12% { border-color: #12a150; background: #12a150; color: #fff; scale: 1.18; }
+    16%, 86% { border-color: #12a150; background: #12a150; color: #fff; scale: 1; }
+    94%, 100% { border-color: rgba(3, 24, 95, .2); background: transparent; color: transparent; scale: 1; }
+}
+
+/* Floating cards: frosted white glass with a fine border. */
+.nova-mh-float { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 12px 16px; border: 1px solid rgba(230, 233, 245, .95); border-radius: 18px; background: rgba(255, 255, 255, .94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 28px 56px -28px rgba(11, 31, 77, .45), 0 10px 24px -16px rgba(3, 24, 95, .35); }
 .nova-mh-float small { color: var(--nv-muted); font-size: 12px; font-weight: 600; }
-.nova-mh-float--markets { right: 10px; top: 4px; gap: 4px; padding: 9px 14px 9px 10px; animation: nova-float 7s .4s ease-in-out infinite; }
-.nova-mh-float--markets .nova-mark + .nova-mark { margin-left: -6px; box-shadow: 0 0 0 2px #fff; }
-.nova-mh-float--markets small { margin-left: 6px; font-weight: 500; }
-.nova-mh-float--markets small b { color: var(--nv-navy); font-weight: 700; }
-/* Bottom-left of the window, clear of the revenue figure. */
-.nova-mh-float--order { left: -18px; bottom: 6px; gap: 10px; padding: 10px 14px 10px 10px; animation: nova-float 6.5s 2s ease-in-out infinite; }
+.nova-mh-float--rated { right: -26px; top: 40%; padding: 10px 14px 10px 10px; animation: nova-float 7s .4s ease-in-out infinite; }
+.nova-mh-float p { display: grid; gap: 2px; margin: 0; }
+.nova-mh-float b { color: var(--nv-navy); font-size: 12px; }
+.nova-mh-float--rated small { font-size: 11px; }
+.nova-mh-float-icon.nova-mh-float-icon--navy { background: linear-gradient(135deg, #03185f, #3d55b0); box-shadow: 0 8px 16px -8px rgba(3, 24, 95, .8); }
+/* Bottom-left of the hub card. */
+.nova-mh-float--order { left: -18px; bottom: -18px; gap: 10px; padding: 10px 14px 10px 10px; animation: nova-float 6.5s 2s ease-in-out infinite; }
 .nova-mh-float--order p { display: grid; gap: 2px; margin: 0; }
 .nova-mh-float--order b { color: var(--nv-navy); font-size: 12px; }
 .nova-mh-float--order small { color: var(--nv-success); font-size: 11px; font-weight: 700; }
@@ -134,27 +135,29 @@
     .nova-mh-inner { grid-template-columns: 1fr; }
     .nova-mh-copy { max-width: 680px; }
     .nova-mh-visual { max-width: 720px; }
-    .nova-mh-float--listing { left: 16px; }
 }
 @media (max-width: 680px) {
     .nova-mh-title { font-size: clamp(34px, 9.6vw, 44px); }
     .nova-mh-actions .nova-button { flex: 1 1 100%; }
     .nova-mh-visual { padding: 24px 0 30px; }
-    .nova-dash-body { padding: 14px; }
-    .nova-dash-url, .nova-dash-range, .nova-dash-tip { display: none; }
-    .nova-dash-live { margin-left: auto; }
-    .nova-dash-revenue { grid-template-columns: 1fr; gap: 10px; }
-    .nova-dash-revenue-copy b { font-size: 26px; }
-    .nova-dash-revenue-chart { height: 64px; }
-    .nova-dash-point { bottom: calc(16px + 64px * 84 / 90); }
-    .nova-dash-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .nova-dash-kpis > div:nth-child(3) { display: none; }
-    .nova-dash-panels { grid-template-columns: 1fr; }
-    .nova-dash-feed { display: none; }
+    .nova-hub { --r: 230px; padding: 16px; gap: 14px; border-radius: 22px; }
+    .nova-hub-markets { display: none; }
+    .nova-hub-live { margin-left: auto; }
+    .nova-hub-head b { font-size: 15px; }
+    .nova-hub-node-in { width: 48px; height: 48px; }
+    .nova-hub-node-in img { width: 24px; height: 24px; }
+    .nova-hub-node--ebay img { width: 34px; }
+    .nova-hub-tasks-head small { display: none; }
+    .nova-hub-tasks ul { grid-template-columns: 1fr; gap: 6px; }
+    .nova-hub-tasks li { grid-template-columns: auto 1fr auto; padding: 7px 10px; }
+    .nova-hub-tasks li p { grid-column: 2; grid-row: 1; }
+    .nova-hub-tasks em { grid-column: 3; }
+    .nova-mh-float--rated { display: none; }
     .nova-mh-float--order { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .nova-dash-point, .nova-dash-live i, .nova-dash-revenue::after, .nova-dash-channels em::after { animation: none; }
+    .nova-hub, .nova-hub-spin, .nova-hub-node-in, .nova-hub-ring, .nova-hub-ring::before, .nova-hub-live i::after, .nova-hub-mark::after, .nova-hub-core::before, .nova-hub-core::after { animation: none; }
+    .nova-hub-tasks em { animation: none; border-color: #22c06a; background: #22c06a; color: #fff; }
     .nova-mh-trust { -webkit-mask-image: none; mask-image: none; }
     /* Without the marquee, the items sit in a compact grid instead of one widely spaced column. */
     .nova-mh-trust-track { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); width: auto; animation: none !important; }

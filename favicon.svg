@@ -2,8 +2,8 @@
   <title id="title">Yoflix</title>
   <defs>
     <linearGradient id="mark" x1="4" y1="4" x2="60" y2="60" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#2B78D0"/>
-      <stop offset="1" stop-color="#1452A0"/>
+      <stop stop-color="#2E44A0"/>
+      <stop offset="1" stop-color="#03185f"/>
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="19" fill="url(#mark)"/>
