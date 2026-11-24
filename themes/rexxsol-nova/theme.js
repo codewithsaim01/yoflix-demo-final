@@ -14,6 +14,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* ---------- Auto reveal: animate blocks that the templates did not mark ---------- */
+    // Inner-page heroes get the word-by-word heading; cards, lists and footer columns
+    // fade up on scroll, staggered across siblings. The home hero has its own entrance.
+    document.querySelectorAll('.nova-page-hero h1:not([data-split])').forEach((title) => { title.dataset.split = ''; });
+    const autoReveal = [
+        '.nova-page-hero-inner > :not(h1):not(.nova-enter)',
+        '.nova-sd-card', '.nova-sd-aside', '.nova-so-grid > li',
+        '.nova-faq-group-title', '.nova-faq', '.nova-faq-support-head', '.nova-faq-support-grid > *',
+        '.nova-offices-grid > *', '.nova-founder-copy', '.nova-mv', '.nova-values-intro', '.nova-vision-head', '.nova-vision-statement',
+        '.nova-article', '.nova-plan-included',
+        '.nova-footer-brand', '.nova-footer section', '.nova-footer-bottom',
+    ].join(', ');
+    const staggerIndex = new Map();
+    document.querySelectorAll(autoReveal).forEach((element) => {
+        if (element.hasAttribute('data-reveal') || element.parentElement?.closest('[data-reveal], .nova-mh')) return;
+        const parent = element.parentElement;
+        const index = staggerIndex.get(parent) || 0;
+        staggerIndex.set(parent, index + 1);
+        element.dataset.reveal = '';
+        if (!element.style.getPropertyValue('--delay')) element.style.setProperty('--delay', `${Math.min(index, 5) * 80}ms`);
+    });
+
     /* ---------- Split headings into masked words ---------- */
     const splitWords = (root) => {
         let index = 0;
@@ -181,10 +203,87 @@ document.addEventListener('DOMContentLoaded', () => {
         open.querySelector(':scope > summary')?.focus();
     });
 
+    /* ---------- Smooth (inertia) scrolling ---------- */
+    // Wheel input eases toward its target instead of jumping. Mouse/trackpad on desktop only;
+    // touch, keyboard, scrollbar dragging and pinch-zoom stay native.
+    const smooth = (() => {
+        const enabled = !reduceMotion && finePointer;
+        let target = window.scrollY;
+        let current = window.scrollY;
+        let running = false;
+        let ease = 0.1;
+        const maxScroll = () => document.documentElement.scrollHeight - window.innerHeight;
+        const stop = () => { running = false; };
+        const step = () => {
+            if (!running) return;
+            current += (target - current) * ease;
+            if (Math.abs(target - current) < 0.5) { current = target; running = false; }
+            window.scrollTo({ top: current, behavior: 'instant' });
+            if (running) window.requestAnimationFrame(step);
+        };
+        const to = (top, speed = 0.1) => {
+            if (!enabled) { window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' }); return; }
+            if (!running) current = window.scrollY;
+            target = Math.max(0, Math.min(top, maxScroll()));
+            ease = speed;
+            if (!running) { running = true; window.requestAnimationFrame(step); }
+        };
+        // Let inner scroll areas (menus, textareas, overflow panels) keep the wheel.
+        const scrollsItself = (node, deltaY) => {
+            for (let el = node; el && el !== document.body && el !== document.documentElement; el = el.parentElement) {
+                if (!(el instanceof Element)) continue;
+                const { overflowY } = getComputedStyle(el);
+                if (!/(auto|scroll)/.test(overflowY) || el.scrollHeight <= el.clientHeight) continue;
+                if ((deltaY < 0 && el.scrollTop > 0) || (deltaY > 0 && el.scrollTop + el.clientHeight < el.scrollHeight)) return true;
+            }
+            return false;
+        };
+        if (enabled) {
+            window.addEventListener('wheel', (event) => {
+                if (event.ctrlKey || event.defaultPrevented || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+                if (document.documentElement.style.overflow === 'hidden' || scrollsItself(event.target, event.deltaY)) return;
+                const unit = event.deltaMode === 1 ? 40 : event.deltaMode === 2 ? window.innerHeight : 1;
+                event.preventDefault();
+                to((running ? target : window.scrollY) + event.deltaY * unit, 0.1);
+            }, { passive: false });
+            ['pointerdown', 'keydown', 'touchstart'].forEach((type) => window.addEventListener(type, stop, { passive: true }));
+        }
+        return { to };
+    })();
+
+    // Same-page anchor links glide to their section, clear of the fixed header.
+    document.addEventListener('click', (event) => {
+        const link = event.target.closest('a[href*="#"]');
+        if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) return;
+        const url = new URL(link.href, window.location.href);
+        if (url.pathname !== window.location.pathname || !url.hash || url.hash === '#') return;
+        const section = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+        if (!section) return;
+        event.preventDefault();
+        const offset = header ? header.getBoundingClientRect().height + 16 : 16;
+        smooth.to(section.getBoundingClientRect().top + window.scrollY - offset, 0.08);
+        history.pushState(null, '', url.hash);
+    });
+
     document.addEventListener('click', (event) => {
         if (!event.target.closest('[data-nova-back-to-top]')) return;
-        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        smooth.to(0, 0.08);
     });
+
+    /* ---------- Hero card: gentle 3D tilt toward the cursor ---------- */
+    const hubVisual = document.querySelector('.nova-mh-visual');
+    const hub = hubVisual?.querySelector('.nova-hub');
+    if (hub && finePointer && !reduceMotion) {
+        hubVisual.addEventListener('pointermove', (event) => {
+            if (!desktop.matches) return;
+            const box = hubVisual.getBoundingClientRect();
+            const x = ((event.clientX - box.left) / box.width) * 2 - 1;
+            const y = ((event.clientY - box.top) / box.height) * 2 - 1;
+            const angle = Math.min(Math.hypot(x, y), 1) * 6;
+            hub.style.rotate = `${(-y).toFixed(3)} ${x.toFixed(3)} 0 ${angle.toFixed(2)}deg`;
+        });
+        hubVisual.addEventListener('pointerleave', () => { hub.style.rotate = ''; });
+    }
 
     /* ---------- Page transitions ---------- */
     const curtain = document.querySelector('.nova-curtain');

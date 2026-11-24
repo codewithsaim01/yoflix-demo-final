@@ -673,6 +673,9 @@
 .nova-js [data-reveal="mask"].is-visible { clip-path: inset(0 0 0 0 round 20px); }
 .nova-js [data-reveal="mask"].is-visible > img { transform: none; }
 
+/* Anchor targets land clear of the fixed header. */
+.theme-rexxsol-nova [id] { scroll-margin-top: calc(var(--nv-header-h) + 16px); }
+
 .nova-cursor { position: fixed; top: 0; left: 0; z-index: 150; pointer-events: none; display: none; }
 .nova-cursor span { display: grid; place-items: center; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: var(--nv-grad); color: #fff; font-size: 13px; font-weight: 600; transform: scale(0); transition: transform .45s var(--nv-ease); box-shadow: 0 14px 30px -12px rgba(3, 24, 95, .7); }
 .nova-cursor.is-active span { transform: scale(1); }

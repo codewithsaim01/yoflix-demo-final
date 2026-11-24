@@ -14,7 +14,7 @@
 .nova-mh-support-marks .nova-mark + .nova-mark { margin-left: -6px; box-shadow: 0 0 0 2px #fff; }
 
 /* Hero visual */
-.nova-mh-visual { position: relative; padding: 16px 0 40px 12px; }
+.nova-mh-visual { position: relative; padding: 16px 0 40px 12px; perspective: 1400px; }
 .nova-mh-photo { overflow: hidden; border-radius: 24px; box-shadow: 0 40px 80px -40px rgba(3, 24, 95, .55); }
 .nova-mh-photo img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; }
 /* Soft colour halo behind the window. */
@@ -22,7 +22,7 @@
 /* A soft dotted pattern peeking out behind the window's top-right corner. */
 .nova-mh-dots { position: absolute; top: 4px; right: -14px; z-index: 0; width: 180px; height: 180px; background-image: radial-gradient(#c6cdea 1.6px, transparent 1.7px); background-size: 16px 16px; -webkit-mask-image: radial-gradient(circle at 70% 30%, #000 30%, transparent 72%); mask-image: radial-gradient(circle at 70% 30%, #000 30%, transparent 72%); pointer-events: none; }
 /* Growth hub: a light glass card like the rest of the site, with marketplaces orbiting the YOFLIX mark. */
-.nova-hub { --r: 250px; position: relative; z-index: 1; overflow: hidden; display: grid; gap: 18px; padding: 22px; border: 1px solid rgba(255, 255, 255, .95); border-radius: 28px; color: var(--nv-navy); background: radial-gradient(70% 55% at 50% 45%, rgba(214, 220, 240, .65) 0%, rgba(214, 220, 240, 0) 70%), linear-gradient(180deg, rgba(255, 255, 255, .96) 0%, rgba(246, 247, 252, .94) 100%); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 60px 100px -45px rgba(11, 31, 77, .4), 0 30px 60px -30px rgba(3, 24, 95, .3), inset 0 1px 0 #fff; animation: nova-float 8s ease-in-out infinite; }
+.nova-hub { --r: 250px; position: relative; z-index: 1; overflow: hidden; display: grid; gap: 18px; padding: 22px; border: 1px solid rgba(255, 255, 255, .95); border-radius: 28px; color: var(--nv-navy); background: radial-gradient(70% 55% at 50% 45%, rgba(214, 220, 240, .65) 0%, rgba(214, 220, 240, 0) 70%), linear-gradient(180deg, rgba(255, 255, 255, .96) 0%, rgba(246, 247, 252, .94) 100%); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 60px 100px -45px rgba(11, 31, 77, .4), 0 30px 60px -30px rgba(3, 24, 95, .3), inset 0 1px 0 #fff; transition: rotate .6s var(--nv-ease); animation: nova-float 8s ease-in-out infinite; }
 /* Fine grid texture, faded towards the edges. */
 .nova-hub::before { content: ''; position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(3, 24, 95, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(3, 24, 95, .05) 1px, transparent 1px); background-size: 28px 28px; -webkit-mask-image: radial-gradient(70% 60% at 50% 45%, #000, transparent 80%); mask-image: radial-gradient(70% 60% at 50% 45%, #000, transparent 80%); pointer-events: none; }
 .nova-hub > * { position: relative; z-index: 1; }
