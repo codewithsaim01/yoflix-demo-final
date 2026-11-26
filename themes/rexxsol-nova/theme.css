@@ -990,8 +990,8 @@
     .nova-quote-card blockquote { font-size: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .nova-marquee-track { animation: none; }
-    .nova-marquee-row { overflow-x: auto; }
+    /* Testimonials keep floating automatically, just slower. */
+    .theme-rexxsol-nova .nova-marquee .nova-marquee-track { animation-duration: calc(var(--marquee-duration, 48s) * 1.6) !important; animation-iteration-count: infinite !important; }
 }
 
 
